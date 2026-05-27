@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travel Booking</title>
+
+<style>
+body { margin:0; font-family: Arial; }
+
+nav {
+    background:black;
+    padding:15px;
+    text-align:center;
+}
+nav a {
+    color:white;
+    margin:10px;
+    text-decoration:none;
+}
+
+.hero {
+    height:80vh;
+    background:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+    background-size:cover;
+    color:white;
+    text-align:center;
+    padding-top:150px;
+}
+
+.section {
+    text-align:center;
+    padding:40px;
+}
+
+.card {
+    display:inline-block;
+    width:250px;
+    margin:15px;
+    box-shadow:0 0 10px gray;
+    cursor:pointer;
+}
+.card img {
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.form-box {
+    background:#f4f4f4;
+    padding:20px;
+    width:300px;
+    margin:auto;
+}
+
+input, select {
+    width:90%;
+    padding:10px;
+    margin:10px;
+}
+
+button {
+    padding:10px 20px;
+    background:orange;
+    border:none;
+}
+
+footer {
+    background:black;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#places">Places</a>
+    <a href="#book">Book</a>
+</nav>
+
+<div class="hero">
+    <h1>Explore The World</h1>
+    <button onclick="goBook()">Book Now</button>
+</div>
+
+<!-- Places -->
+<div class="section" id="places">
+<h2>Popular Places</h2>
+
+<div class="card" onclick="selectPlace('Paris')">
+<img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34">
+<h3>Paris</h3>
+<p>5 Days | ₹80,000</p>
+</div>
+
+<div class="card" onclick="selectPlace('Maldives')">
+<img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21">
+<h3>Maldives</h3>
+<p>4 Days | ₹70,000</p>
+</div>
+
+<div class="card" onclick="selectPlace('Ladakh')">
+<img src="https://images.unsplash.com/photo-1571679654681-ba01b9e1e117">
+<h3>Ladakh</h3>
+<p>6 Days | ₹40,000</p>
+</div>
+
+<div class="card" onclick="selectPlace('London')">
+<img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b">
+<h3>London</h3>
+<p>6 Days | ₹1,20,000</p>
+</div>
+
+<div class="card" onclick="selectPlace('Switzerland')">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+<h3>Switzerland</h3>
+<p>7 Days | ₹1,50,000</p>
+</div>
+
+</div>
+
+<!-- Booking -->
+<div class="section" id="book">
+<h2>Book Your Trip</h2>
+
+<div class="form-box">
+<input type="text" id="name" placeholder="Your Name">
+
+<select id="place">
+<option value="">Select Place</option>
+<option>Paris</option>
+<option>Maldives</option>
+<option>Ladakh</option>
+<option>London</option>
+<option>Switzerland</option>
+</select>
+
+<input type="date" id="date">
+
+<button onclick="bookNow()">Confirm Booking</button>
+</div>
+</div>
+
+<footer>
+<p>© 2026 Travel Booking</p>
+</footer>
+
+<script>
+function goBook() {
+    document.getElementById("book").scrollIntoView({behavior:"smooth"});
+}
+
+function selectPlace(placeName) {
+    document.getElementById("place").value = placeName;
+    document.getElementById("book").scrollIntoView({behavior:"smooth"});
+}
+
+function bookNow() {
+    let name = document.getElementById("name").value;
+    let place = document.getElementById("place").value;
+    let date = document.getElementById("date").value;
+
+    if(name=="" || place=="" || date=="") {
+        alert("Fill all details!");
+    } else {
+        alert("Booking Confirmed!\n\nName: "+name+
+              "\nPlace: "+place+
+              "\nDate: "+date);
+    }
+}
+</script>
+
+</body>
+</html>
